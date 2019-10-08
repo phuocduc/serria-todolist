@@ -34,7 +34,7 @@ body{
     
 }
 
-input{
+.thingstodo{
     width: 100%;
     max-width: 500px;
     margin-bottom: 10px;
@@ -57,7 +57,7 @@ input{
     border-radius: 50px;
     text-align: center;
     list-style-type: none;
-    margin:20px;
+   
 }
 
 .btn-group ol li:hover{
@@ -78,3 +78,4 @@ input{
     width: 500px;
     height: 350px;
 }
+

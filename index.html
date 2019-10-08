@@ -22,11 +22,12 @@
     <div class="container">
       <h1 class="text-center zendesk-size">To Do List</h1>
       <div class="category">
-        <input type="text" id="thingsToDo" placeholder="something...." />
+        <input class="thingstodo" type="text" id="thingsToDo" placeholder="something...." />
         <span><input type="datetime-local" name="" id="datetime"></span>
-        <div class="btn-group">
+        <div class="btn-group mt-3">
           <ol>
             <li><a id="myBtn" onclick="addTodo()">Add</a></li>
+            <li><a onclick="openJob()">Open</a></li>
             <li><a onclick="solved()">Solved</a></li>
             <li><a onclick="unSolved()">UnSolved</a></li>
             <li><a onclick="allTodos()">All</a></li>
