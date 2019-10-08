@@ -20,9 +20,11 @@ function save(){
 function addTodo()
 {
     const item = document.getElementById('thingsToDo').value;
+    const time = document.getElementById('datetime').value;
     masterTodoList.push({
         text: `${item}`,
-        isDone:false
+        isDone:false,
+        date: `${time}`
     })
     renderTodos(masterTodoList)
 }
@@ -38,7 +40,7 @@ function renderTodos(arr)
     let html = ""
     for(let i = 0;i< arr.length;i++)
     {
-        html += `<li onclick="toggleDone(${i})" style="list-style-type: none;font-size:20pt" class="${arr[i].isDone ? 'Done': 'unDone'}">${arr[i].text}<a href="#" onclick="remove(${i})">${arr[i].isDone ? '  MarkUndone <a style="cursor:pointer">X</a>' : '   MarkDone <a style="cursor:pointer">X</a>'}</a> </li>\n`;
+        html += `<li onclick="toggleDone(${i})" style="list-style-type: none;font-size:20pt" class="${arr[i].isDone ? 'Done': 'unDone'}">${arr[i].date}${arr[i].text}<a href="#" onclick="remove(${i})">${arr[i].isDone ? '  MarkUndone <a style="cursor:pointer">X</a>' : '   MarkDone <a style="cursor:pointer">X</a>'}</a> </li>\n`;
     }
     console.log("test html",html)
     document.getElementById('show').innerHTML = `<ul>${html}</ul>`
@@ -111,3 +113,10 @@ function checkBoxFilter()
 }
 
 
+var input = document.getElementById("thingsToDo");
+input.addEventListener("keyup", function(event) {
+  if (event.keyCode === 13) {
+   event.preventDefault();
+   document.getElementById("myBtn").click();
+  }
+});
