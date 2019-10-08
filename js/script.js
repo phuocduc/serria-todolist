@@ -4,6 +4,10 @@ let masterTodoList = []
 function getOldSession(){
     if(localStorage.getItem('todolist') != null){
         masterTodoList = JSON.parse(localStorage.getItem('todolist'))
+        let transferDataFromOldStorageToHtml = masterTodoList.map(items=>items.text).join(" ")
+        document.getElementById('show').innerHTML = transferDataFromOldStorageToHtml
+     
+        
     }
 }
 
@@ -68,7 +72,11 @@ function allTodos()
     renderTodos(masterTodoList)
 }
 
-
+function history()
+{
+    let i = masterTodoList.map()
+    document.getElementById('show').innerHTML = i
+}
 
 
 
