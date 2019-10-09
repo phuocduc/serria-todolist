@@ -6,8 +6,6 @@ function getOldSession(){
         masterTodoList = JSON.parse(localStorage.getItem('todolist'))
         let transferDataFromOldStorageToHtml = masterTodoList.map(items=>items.text).join(" ")
         document.getElementById('show').innerHTML = transferDataFromOldStorageToHtml
-        
-        
     }
 }
 
@@ -50,7 +48,7 @@ function renderTodos(arr)
 
         html += `<li onclick="toggleDone(${i})"
         style="list-style-type: none;font-size:20pt;display:flex;justify-content:space-between" 
-        class="${arr[i].isDone ? 'Done': 'unDone'}" id="li-pending">${arr[i].date}  ${arr[i].text}
+        class="${arr[i].isDone ? 'Done': 'unDone'} ${arr[i].isPending ? "is-open" : ""}">${arr[i].date}  ${arr[i].text}
         </li><span onclick="Opening(${i})"><a href=#">Opening<a></span>
         <span onclick="remove(${i})" style="margin-right:40px"><a href="#">Delete</a></span> 
         `
@@ -62,23 +60,26 @@ function renderTodos(arr)
 
 function Opening(idx)
 {
-    if(masterTodoList[idx].pending == true)
-    {
-        masterTodoList[idx].pending = false
-        renderTodos(masterTodoList)
-    }
-    else{
-        masterTodoList[idx].pending = true
-        renderTodos(masterTodoList)
-        document.getElementById('li-pending').style.backgroundColor = "yellow"
+
+    masterTodoList[idx].isPending = !masterTodoList[idx].isPending;
+    renderTodos(masterTodoList);
+    // if(masterTodoList[idx].isPending == true)
+    // {
+    //     masterTodoList[idx].isPending = false
+    //     renderTodos(masterTodoList)
+    // }
+    // else{
+    //     masterTodoList[idx].isPending = true
+    //     renderTodos(masterTodoList)
+   
         
-    }
+    // }
 }
 
 
 function openJob()
 {
-    let pending = masterTodoList.filter(items=>items.pending === true)
+    let pending = masterTodoList.filter(items=>items.isPending === true)
     renderTodos(pending)
 }
 

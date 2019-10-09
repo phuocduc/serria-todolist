@@ -79,3 +79,6 @@ body{
     height: 350px;
 }
 
+.is-open{
+    background-color: yellow;
+}
