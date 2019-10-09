@@ -48,7 +48,7 @@ function renderTodos(arr)
         //other ways
 
         html += `<li onclick="toggleDone(${i})"
-        style="list-style-type: none;font-size:20pt;display:flex;justify-content:space-between" 
+        style="list-style-type: none;font-size:20pt;color:#ff0000b8;display:flex;justify-content:space-between" 
         class="${arr[i].isDone ? 'Done': 'unDone'} ${arr[i].isPending ? "is-open" : ""}">${arr[i].date} :  ${arr[i].text}
         </li><span><a onclick="Opening(${i})" href=#">Opening<a><span style="margin-right:40px"><a onclick="remove(${i})" href="#">Delete</a></span></span> 
         `
