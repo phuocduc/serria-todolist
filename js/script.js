@@ -7,6 +7,7 @@ function getOldSession(){
         let transferDataFromOldStorageToHtml = masterTodoList.map(items=>items.text).join(" ")
         document.getElementById('show').innerHTML = transferDataFromOldStorageToHtml
     }
+  
 }
 
 // end localstoare
@@ -23,7 +24,7 @@ function addTodo()
         text: `${item}`,
         isDone:false,
         isPending: false,
-        date: `${time}`
+        date: `${moment(time).fromNow()}`
     })
     renderTodos(masterTodoList)
 }
@@ -48,9 +49,8 @@ function renderTodos(arr)
 
         html += `<li onclick="toggleDone(${i})"
         style="list-style-type: none;font-size:20pt;display:flex;justify-content:space-between" 
-        class="${arr[i].isDone ? 'Done': 'unDone'} ${arr[i].isPending ? "is-open" : ""}">${arr[i].date}  ${arr[i].text}
-        </li><span onclick="Opening(${i})"><a href=#">Opening<a></span>
-        <span onclick="remove(${i})" style="margin-right:40px"><a href="#">Delete</a></span> 
+        class="${arr[i].isDone ? 'Done': 'unDone'} ${arr[i].isPending ? "is-open" : ""}">${arr[i].date} :  ${arr[i].text}
+        </li><span><a onclick="Opening(${i})" href=#">Opening<a><span style="margin-right:40px"><a onclick="remove(${i})" href="#">Delete</a></span></span> 
         `
     }
     document.getElementById('show').innerHTML = `${html}`
@@ -85,8 +85,8 @@ function openJob()
 
 function remove(idx)
 {
-
     masterTodoList.splice(idx,1)
+    console.log(masterTodoList)
     renderTodos(masterTodoList)
 }
 
